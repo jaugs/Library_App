@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="js/script.js" defer></script>
+  </head>
+
+  <body>
+
+    <div class="header">Welcome to the Library</div>
+
+      <div class="formTitle">Lets add a book!</div>
+     
+       <div class="titleInput">
+       <label for="title">TITLE</label>
+         <input type="text" id="title" name="title" placeholder="Thor">
+       </div>
+       <div class="authorInput">
+       <label for="author">AUTHOR</label>
+         <input type="text" id="author" name="author" placeholder="Odinson">
+       </div>
+       <div class="pagesInput">
+        <label for="pages">NUMBER OF PAGES</label>
+          <input type="text" id="pages" name="pages" placeholder="number">
+        </div>
+        <div class="readInput">
+          <label for="read">HAVE READ?</label>
+          <input type="checkbox" id="read" name="read" value="isRead" checked>
+      
+          <button id= 'submit' type="submit" onclick="createBook()">add Book</button>
+        </div>
+
+    <div class="container">
+
+      <div class="shelf">
+        <div class="card">
+          <p>Book Number 1 EX</p>
+        </div>
+        <div class="card">
+          <p>Book Number 2 EX</p>
+        </div>
+      </div>
+
+      <div class="shelf">
+        <div class="card">
+          <p>Book Number 3 EX</p>
+        </div>
+        <div class="card">
+          <p>Book Number 4 EX</p>
+        </div>
+      </div>
+      <div class="sidebar"></div>
+    </div>
+
+
+
+ 
+ <div class = footer>
+  By J.AUGS, 2022
+ </div>
+
+</body>
+</html>
+
