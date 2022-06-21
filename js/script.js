@@ -26,134 +26,51 @@ function createBook () {
   myLibrary.push(newBook);
   console.log(myLibrary);
   console.log(newBook);
- // return newBook;
   addBook(newBook);
 }
 
 function addBook (newBook) {
       let bookCover = document.createElement('div');
-     // let readCheck = document.createElement()
-
-    
-
       bookCover.setAttribute('class', 'card');
+      bookCover.style.backgroundColor = randomColor();
       shelf.appendChild(bookCover);
-      bookCover.textContent = newBook.title;
+      bookCover.innerText = newBook.title;
       let newBtn = document.createElement("button");
       newBtn.innerHTML = "View Options";
       newBtn.setAttribute('class', 'options');
       newBtn.onclick = function() {
+        clearOptions();
         let infoCard = document.createElement('div');
-        infoCard.setAttribute('class', 'sidebarCard');
-        infoCard.innerText = newBook.title;
-        infoCard.innerText = newBook.author;
-        infoCard.innerText = newBook.pages;
-        //infoCard.textContent = newBook.read;
+        infoCard.innerText = "Book Values"
+        infoCard.setAttribute('id', 'sidebarCard');
         info.appendChild(infoCard);
+        let valueList = document.createElement('ul');
+        valueList.setAttribute('id','newList');
+        infoCard.appendChild(valueList);
+        for (let key in newBook) {
+          let li = document.createElement('li');
+          li.innerHTML = newBook[key];
+          valueList.appendChild(li);
+        }
+        let deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete Book";
+        deleteButton.setAttribute('class', 'delete');
+        infoCard.appendChild(deleteButton);
+        deleteButton.onclick = function() {
+          bookCover.remove();
+        }
        };
       bookCover.appendChild(newBtn);
-
     }
+      
+function randomColor() {
+    let color = ["darkred", "goldenrod", "salmon", "teal", "plum", "darkblue", "darkgreen", "indigo", "darkgray", "orange", "purple", "darkcyan"] 
+    let colorRandom = color[Math.floor(Math.random() * color.length)];
+    return colorRandom}
 
-
-
-
-
-
-
-
-// const container = document.querySelector('.pad');
-// let colorImput = document.querySelector('.colorImput');
-// let clickImput = document.querySelector('.clickImput');
-// const appSwitch = document.querySelector('.switch_Box')
-// container.style.backgroundColor = colorImput.value
-
-// function choseColor() {
-//     gridElements.forEach(item => {
-//         item.addEventListener("mouseover", function (event) {
-//             event.target.style.backgroundColor = colorImput.value;})})
-// }
-
-// function selectAll() {
-//     return gridElements = document.querySelectorAll(".square");
-// }
-
-// function initialize(squareSize) 
-// {
-//     for (let i = 0; i < squareSize * squareSize; i+=1) 
-//         {
-//         const box = document.createElement('div');
-//         box.setAttribute('class', 'square')
-//         container.appendChild(box);
-//         selectAll(); 
-//         }
-//     container.style.gridTemplateColumns = `repeat(${squareSize}, 1fr)`;
-// }
-
-// function changeSize() {
-//     clearGrid();
-//     let newGrid = document.getElementById("grid_Size").value;
-//     if (newGrid > 100) {
-//         alert("Error! Grid cannot have over 100 elements");
-//         return;
-//     } else {
-//     initialize(newGrid);
-//     hover();
-//     clicker();
-// }}
-
-// function clearGrid() {
-//     let remove = document.querySelector('.pad');
-//     while (remove.firstChild) {
-//         remove.removeChild(remove.firstChild);
-//     }
-// }
-
-// appSwitch.addEventListener('change', () => {
-//     changeStates();
-// })
-
-// function changeStates() {
-//     if (appSwitch.checked)
-//     {rainbowColors()
-//     } else { choseColor()}
-// }
-
-// initialize(16);
-
-// function hover() {
-//     gridElements.forEach(item => {
-//     item.addEventListener("mouseover", function (event) {
-//         event.target.style.backgroundColor = colorImput.value;})})
-//     }
-// function clicker() {
-//     gridElements.forEach(item => {
-//     item.addEventListener("click", function (event) {
-//             event.target.style.backgroundColor = clickImput.value;})})
-//         }
-
-// function rainbowColors() {
-//     gridElements.forEach(item => {
-//         item.addEventListener("mouseover", function (event) {
-//             event.target.style.backgroundColor = randomColor();})})
-//         }
-
-// function randomColor() {
-//     let color = ["blue", "red", "yellow", "salmon", "teal", "plum", "darkblue", "green", "indigo", "cyan", "orange", "purple", "crimson"] 
-//     let colorRandom = color[Math.floor(Math.random() * color.length)];
-//     return colorRandom
-// }
-
-
-// hover();
-// clicker();
-
-
-
-
-
-
-
-
-
-
+function clearOptions () {
+  let element = document.getElementById('sidebarCard');
+ if (element) {
+  element.remove();
+} else return;
+}
